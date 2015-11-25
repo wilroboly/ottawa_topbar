@@ -1,0 +1,237 @@
+<?php
+/**
+ * Ottawa Topbar Module
+ *
+ * @author william roboly
+ * @version $Id$
+ * @copyright , 11 November, 2015
+ * @package ottawa_topbar
+ */
+
+/**
+ * This module enables selected blocks to be rendered in specific positions 
+ * according to the City of Ottawa design definitions. By using the Context 
+ * module's funcitonality along with core Drupal API calls, the module can
+ * position the required Topbar Common Menu elements while remaining theme
+ * agnostic. Any and all CSS provided by the module can be used or overrided
+ * per best practices.
+ */
+
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function ottawa_topbar_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ottawa_topbar_menu() {
+  $items['admin/content/elements/ottawa-topbar'] = array(
+    'title' => 'Ottawa TopBar Output',
+    'page callback' => 'theme',
+    'page arguments' => array('ottawa_block_topbar'),
+    'access arguments' => array('access administration pages'), // array('access content'), 
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ottawa_topbar_theme($existing, $type, $theme, $path) {
+  $themes = array();
+  if ($type == 'module') {
+    $themes['ottawa_block_topbar'] = array(
+      'template' => 'ottawa-topbar',
+      'variables' => array('block' => array(), 'block_regions' => null),
+      'path' => $path . '/templates',
+    );
+    $themes['ottawa_block_logo'] = array(
+      'template' => 'ottawa-logo',
+      'variables' => array('block' => array()),
+      'path' => $path . '/templates',
+    );
+    $themes['ottawa_block_alerts'] = array(
+      'template' => 'ottawa-alerts',
+      'variables' => array('block' => array()),
+      'path' => $path . '/templates',
+    );
+    $themes['ottawa_block_other_city'] = array(
+      'template' => 'ottawa-other-city',
+      'variables' => array('block' => array()),
+      'path' => $path . '/templates',
+    );
+    $themes['ottawa_block_service_links'] = array(
+      'template' => 'ottawa-service-links',
+      'variables' => array('block' => array()),
+      'path' => $path . '/templates',
+    );
+  }
+  return $themes;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function ottawa_topbar_block_info () {
+  $blocks = array();
+  $blocks['ottawa_topbar'] = array(
+    'info' => t('City of Ottawa Common Menus'),
+  );
+  $blocks['ottawa_logo'] = array(
+    'info' => t('City of Ottawa Logo'),
+  );
+  $blocks['ottawa_alerts'] = array(
+    'info' => t('City of Ottawa Alerts'),
+  );
+  $blocks['ottawa_other_city'] = array(
+    'info' => t('City of Ottawa Other City links'),
+  );
+  $blocks['ottawa_service_links'] = array(
+    'info' => t('City of Ottawa Service links'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ottawa_topbar_block_view ($delta = '') {
+  $block = array();
+  switch($delta) {
+    case 'ottawa_topbar':
+      $block['content'] = ottawa_topbar_block_content();
+      break;
+
+    case 'ottawa_logo':
+      $block['content'] = ottawa_logo_block_content();
+      break;
+
+    case 'ottawa_alerts':
+      $block['content'] = ottawa_alerts_block_content();
+      break;
+
+    case 'ottawa_other_city':
+      $block['content'] = ottawa_other_city_block_content();
+      break;
+
+    case 'ottawa_service_links':
+      $block['content'] = ottawa_service_links_block_content();
+      break;
+  }
+  return $block;
+}
+
+function ottawa_topbar_process_block(&$variables) {
+  // Nothing here for now...
+}
+
+function ottawa_topbar_preprocess_block(&$variables) {
+  if (isset($variables['block']->context) and $variables['block']->context == 'ottawa_common_bar') {
+    $variables['theme_hook_suggestions'][] = 'block__top_bar';
+  }
+}
+
+function ottawa_topbar_preprocess_page(&$vars) 
+{
+  // Nothing here for now...
+}
+
+
+/*
+ * Implements hook_system_info_alter().
+ */
+function ottawa_topbar_system_info_alter(&$info, $file, $type) {
+  if ($type == 'theme') {
+    $info['regions']['topbar_left'] = t('Topbar Inner Left');
+    $info['regions']['topbar_right'] = t('Topbar Inner Right');
+  }
+}
+
+/**
+ * Topbar Common Elements
+ */
+function ottawa_topbar_block_content () {
+  $block = array();
+  $block_regions = array();
+  $module_path = drupal_get_path('module', 'ottawa_topbar');
+  
+  // Blocks that are assigned to the region using Context
+  if (function_exists('context_get_plugin') && $context = context_get_plugin('reaction', 'block')) {
+    ottawa_topbar_system_info_alter($regions, NULL, 'theme');
+    foreach ($regions['regions'] as $region_key => $region_name) {
+      if ($context_block_list = $context->block_list($region_key)) {
+        // Workaround the $context->block_get_blocks_by_region() issue.
+        // See https://drupal.org/node/966768
+        $fixed_context_block_list = _block_render_blocks($context_block_list);
+        $block_regions[$region_key] = _block_get_renderable_array($fixed_context_block_list);
+      }
+    }
+  }
+
+  $block = array(
+    '#theme' => 'ottawa_block_topbar',
+    '#attached' => array(
+      'css' => array(
+        $module_path . '/assets/css/ottawa_topbar.css',
+      ),
+    ),
+    '#block_regions' => $block_regions,
+  );
+
+  return $block;
+}
+
+/**
+ * Topbar Common Elements
+ */
+function ottawa_logo_block_content () {
+  $block = array();
+  $module_path = drupal_get_path('module', 'ottawa_topbar');
+
+  $block = array(
+    '#theme' => 'ottawa_block_logo',
+  );
+  
+  return $block;
+}
+
+function ottawa_alerts_block_content () {
+  $block = array();
+  $module_path = drupal_get_path('module', 'ottawa_topbar');
+
+  $block = array(
+    '#theme' => 'ottawa_block_alerts',
+  );
+  
+  return $block;
+}
+
+function ottawa_other_city_block_content () {
+  $block = array();
+  $module_path = drupal_get_path('module', 'ottawa_topbar');
+
+  $block = array(
+    '#theme' => 'ottawa_block_other_city',
+  );
+
+  return $block;
+}
+
+function ottawa_service_links_block_content () {
+  $block = array();
+  $module_path = drupal_get_path('module', 'ottawa_topbar');
+
+  $block = array(
+    '#theme' => 'ottawa_block_service_links',
+  );
+
+  return $block;
+}
+

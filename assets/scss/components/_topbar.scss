@@ -1,0 +1,393 @@
+$topbar-light-grey: $jet;
+$topbar-dark-grey: $onyx;
+
+#global-topbar {
+  position: relative;
+  z-index: 201;
+}
+
+#topbar {
+  padding: 0;
+  margin-bottom: 0;
+  border-top: 1px solid $topbar-light-grey;
+  border-bottom: 1px solid $topbar-dark-grey;
+  min-height: 0;
+  font-size: 13px;
+  background-color: $charcoal;
+  color: $white;
+  @include border-radius(0);
+
+  .inner-bounds {
+    border-top: 1px solid $topbar-dark-grey;
+    border-bottom: 1px solid $topbar-light-grey;
+  }
+
+  &.navbar-inverse .navbar-nav > .active > a {
+    background-color: $charcoal;
+
+    &:hover, &:focus {
+      background-color: $white;
+    }
+  }
+
+  .container > .navbar-right {
+    margin-right: 0;
+  }
+
+  .menu {
+    padding: 0;
+    margin-left: -2px;
+    border-left: 1px solid $topbar-light-grey;
+    border-right: 1px solid $topbar-dark-grey;
+
+    li {
+      display: block;
+      float: left;
+      width: 100%;
+      border-left: 1px solid $topbar-dark-grey;
+      border-right: 1px solid $topbar-light-grey;
+      list-style: none;
+
+      a {
+        display: block;
+        padding: 10px 20px;
+        line-height: 21px;
+
+        &.glyphicon-dropdown-toggle {
+          padding-top: 7px;
+          padding-bottom: 7px;
+
+          .glyphicon {
+            margin-top: 1px;
+            font-size: 20px;
+          }
+
+          .alert-count {
+            position: relative;
+            top: -7px;
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      background-color: $white;
+      color: $charcoal;
+    }
+  }
+
+  &.navbar-inverse .navbar-nav > .dropdown {
+    &.open,
+    &:focus {
+      > .dropdown-toggle {
+        position: relative;
+        color: $white;
+        background-color: $iron;
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 100%;
+          height: 10px;
+          background: url('../images/arrow.png') center center no-repeat;
+          z-index: 1050; // Dropdown-menu is z-index 1000.
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    margin-top: 2px;
+    padding: 30px 20px 20px;
+    border: 1px solid $topbar-dark-grey;
+    border-top: 0;
+    background-color: $charcoal;
+    @include border-radius(0);
+
+    li {
+      border: none;
+      background-color: transparent;
+    }
+
+    a {
+      color: $white;
+      background-color: transparent;
+
+      &:hover, &:focus {
+        color: $white;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .bean-basic {
+    float: left;
+
+    p {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .ottawa-logo-link {
+    display: block;
+    padding: 9px 0;
+
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+
+  .ottawa-logo {
+    height: 22px;
+  }
+
+  .alerts-dropdown {
+    .dropdown-menu {
+      li {
+        display: table;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        color: $charcoal;
+        background-color: $white;
+
+        a {
+          display: table;
+          padding: 10px;
+          margin: -10px;
+          color: $charcoal;
+          white-space: normal;
+
+          &:hover, &:focus {
+            color: $charcoal;
+            background-color: $white;
+            text-decoration: none;
+          }
+        }
+
+        .glyphicon {
+          display: table-cell;
+          vertical-align: middle;
+          padding-right: 10px;
+          font-size: 24px;
+          color: $ottawa-blue;
+        }
+
+        &.warning {
+          color: $scarlet;
+
+          a {
+            color: $scarlet;
+          }
+
+          .glyphicon {
+            color: $scarlet;
+          }
+        }
+      }
+    }
+  }
+
+  .other-city-dropdown {
+    .left-side,
+    .right-side {
+      ul {
+        overflow: hidden;
+      }
+    }
+
+    .dropdown-menu {
+      .title {
+        margin: 0 0 10px;
+        padding: 0;
+        font-size: 20px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: block;
+          padding: 10px 0;
+          list-style: none;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: $screen-xs-max) {
+  #global-topbar {
+    #topbar {
+      .container {
+        @include no-gutters();
+      }
+
+      .ottawa-logo-link {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .menu li a {
+        &.glyphicon-dropdown-toggle {
+          padding: 5px 14px;
+        }
+      }
+    }
+  }
+
+  #topbar {
+    .service-links {
+      display: none;
+    }
+
+    .navbar-left,
+    .navbar-right {
+      margin: 0 0 0 -2px;
+    }
+
+    .navbar-left {
+      float: left;
+    }
+
+    .navbar-right {
+      float: right;
+    }
+
+    .nav > li {
+      position: static;
+    }
+
+    .ottawa-logo-container {
+      @include gutters();
+    }
+
+    .ottawa-logo-link {
+      padding-top: 17px;
+      padding-bottom: 17px;
+    }
+
+    .menu li a {
+      &.glyphicon-dropdown-toggle {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-left: -1px;
+      margin-right: -1px;
+      padding: 0;
+    }
+
+    .dropdown-menu,
+    .other-city-dropdown-above,
+    .other-city-dropdown .dropdown-menu {
+      ul,
+      .menu {
+        border: none;
+
+        li {
+          float: none;
+          padding: 0;
+          width: 100%;
+
+          a {
+            padding: 20px ($grid-gutter-width / 2);
+            border-bottom: 1px solid $topbar-light-grey;
+            font-size: 15px;
+
+            &:hover, &:focus {
+              background-color: $white;
+              color: $charcoal;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .other-city-dropdown {
+      .dropdown-menu .title {
+        margin: 0;
+        padding: 20px ($grid-gutter-width / 2);
+        border-top: 1px solid $topbar-dark-grey;
+        border-bottom: 1px solid $topbar-light-grey;
+        font-size: 17px;
+        background-color: $topbar-light-grey;
+
+        &:before {
+          @include font-icon("\e114");
+          margin-right: 10px;
+        }
+      }
+
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .left-side,
+      .right-side {
+        @include no-gutters();
+      }
+    }
+
+    .alerts-dropdown {
+      .dropdown-menu {
+        padding: 20px 12px 10px;
+      }
+    }
+  }
+}
+
+
+@media (min-width: $screen-sm-min) {
+  #topbar {
+    .dropdown-menu {
+      width: 300px;
+    }
+
+    .other-city-dropdown {
+      .dropdown-menu {
+        width: 465px;
+
+        ul {
+          padding-left: 1.375rem;
+
+          li {
+            padding: 10px 0;
+
+            a {
+              margin-left: 0;
+              padding: 0;
+              @include list-icon();
+
+              &:before {
+                margin-left: -1.375rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

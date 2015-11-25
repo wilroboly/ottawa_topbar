@@ -1,0 +1,405 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900,400italic);
+/**
+ * Imports all styled components and sections of the website.
+ */
+@at-root {
+  @font-face {
+    font-family: 'Social Fontastic Icons';
+    src: url("../fonts/ottawa-social-icons.eot");
+    src: url("../fonts/ottawa-social-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/ottawa-social-icons.woff") format("woff"), url("../fonts/ottawa-social-icons.ttf") format("truetype"), url("../fonts/ottawa-social-icons.svg") format("svg"); } }
+
+/**
+ * Remove column gutters on an element.
+ */
+/**
+ * Add column gutters to an element.
+ */
+/**
+ * Collapse an element into the gutters of it's container (using negative margins).
+ */
+/**
+ * Collapse an element into the gutters of the site container (using negative margins).
+ */
+/**
+ * Add site container gutters (which are larger than column gutters).
+ */
+/**
+ * Set the content to a font-icon character and change the font-family appropriately.
+ */
+/**
+ * Set the content to a font-social-icon character and change the font-family appropriately.
+ */
+/**
+ * Social media icon mixins (in case the Fontastic font changes characters in the future).
+ */
+/**
+ * Shows an icon in front of inline text.
+ *
+ * $content -> Defaults to a right-arrow icon.
+ */
+/* line 4, ../scss/components/_topbar.scss */
+#global-topbar {
+  position: relative;
+  z-index: 201; }
+
+/* line 9, ../scss/components/_topbar.scss */
+#topbar {
+  padding: 0;
+  margin-bottom: 0;
+  border-top: 1px solid #3c3c3c;
+  border-bottom: 1px solid #1c1c1c;
+  min-height: 0;
+  font-size: 13px;
+  background-color: #2b2b2b;
+  color: white;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0; }
+  /* line 20, ../scss/components/_topbar.scss */
+  #topbar .inner-bounds {
+    border-top: 1px solid #1c1c1c;
+    border-bottom: 1px solid #3c3c3c; }
+  /* line 25, ../scss/components/_topbar.scss */
+  #topbar.navbar-inverse .navbar-nav > .active > a {
+    background-color: #2b2b2b; }
+    /* line 28, ../scss/components/_topbar.scss */
+    #topbar.navbar-inverse .navbar-nav > .active > a:hover, #topbar.navbar-inverse .navbar-nav > .active > a:focus {
+      background-color: white; }
+  /* line 33, ../scss/components/_topbar.scss */
+  #topbar .container > .navbar-right {
+    margin-right: 0; }
+  /* line 37, ../scss/components/_topbar.scss */
+  #topbar .menu {
+    padding: 0;
+    margin-left: -2px;
+    border-left: 1px solid #3c3c3c;
+    border-right: 1px solid #1c1c1c; }
+    /* line 43, ../scss/components/_topbar.scss */
+    #topbar .menu li {
+      display: block;
+      float: left;
+      width: 100%;
+      border-left: 1px solid #1c1c1c;
+      border-right: 1px solid #3c3c3c;
+      list-style: none; }
+      /* line 51, ../scss/components/_topbar.scss */
+      #topbar .menu li a {
+        display: block;
+        padding: 10px 20px;
+        line-height: 21px; }
+        /* line 56, ../scss/components/_topbar.scss */
+        #topbar .menu li a.glyphicon-dropdown-toggle {
+          padding-top: 7px;
+          padding-bottom: 7px; }
+          /* line 60, ../scss/components/_topbar.scss */
+          #topbar .menu li a.glyphicon-dropdown-toggle .glyphicon {
+            margin-top: 1px;
+            font-size: 20px; }
+          /* line 65, ../scss/components/_topbar.scss */
+          #topbar .menu li a.glyphicon-dropdown-toggle .alert-count {
+            position: relative;
+            top: -7px;
+            margin-left: 3px; }
+  /* line 75, ../scss/components/_topbar.scss */
+  #topbar a {
+    color: white;
+    text-decoration: none; }
+    /* line 79, ../scss/components/_topbar.scss */
+    #topbar a:hover, #topbar a:focus {
+      background-color: white;
+      color: #2b2b2b; }
+  /* line 88, ../scss/components/_topbar.scss */
+  #topbar.navbar-inverse .navbar-nav > .dropdown.open > .dropdown-toggle, #topbar.navbar-inverse .navbar-nav > .dropdown:focus > .dropdown-toggle {
+    position: relative;
+    color: white;
+    background-color: #505050; }
+    /* line 93, ../scss/components/_topbar.scss */
+    #topbar.navbar-inverse .navbar-nav > .dropdown.open > .dropdown-toggle:after, #topbar.navbar-inverse .navbar-nav > .dropdown:focus > .dropdown-toggle:after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: url("../images/arrow.png") center center no-repeat;
+      z-index: 1050; }
+  /* line 107, ../scss/components/_topbar.scss */
+  #topbar .dropdown-menu {
+    margin-top: 2px;
+    padding: 30px 20px 20px;
+    border: 1px solid #1c1c1c;
+    border-top: 0;
+    background-color: #2b2b2b;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0; }
+    /* line 115, ../scss/components/_topbar.scss */
+    #topbar .dropdown-menu li {
+      border: none;
+      background-color: transparent; }
+    /* line 120, ../scss/components/_topbar.scss */
+    #topbar .dropdown-menu a {
+      color: white;
+      background-color: transparent; }
+      /* line 124, ../scss/components/_topbar.scss */
+      #topbar .dropdown-menu a:hover, #topbar .dropdown-menu a:focus {
+        color: white;
+        background-color: transparent;
+        text-decoration: underline; }
+  /* line 132, ../scss/components/_topbar.scss */
+  #topbar .bean-basic {
+    float: left; }
+    /* line 135, ../scss/components/_topbar.scss */
+    #topbar .bean-basic p {
+      display: inline;
+      margin: 0;
+      padding: 0; }
+  /* line 142, ../scss/components/_topbar.scss */
+  #topbar .ottawa-logo-link {
+    display: block;
+    padding: 9px 0; }
+    /* line 146, ../scss/components/_topbar.scss */
+    #topbar .ottawa-logo-link:hover, #topbar .ottawa-logo-link:focus {
+      background-color: transparent; }
+  /* line 151, ../scss/components/_topbar.scss */
+  #topbar .ottawa-logo {
+    height: 22px; }
+  /* line 157, ../scss/components/_topbar.scss */
+  #topbar .alerts-dropdown .dropdown-menu li {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: #2b2b2b;
+    background-color: white; }
+    /* line 166, ../scss/components/_topbar.scss */
+    #topbar .alerts-dropdown .dropdown-menu li a {
+      display: table;
+      padding: 10px;
+      margin: -10px;
+      color: #2b2b2b;
+      white-space: normal; }
+      /* line 173, ../scss/components/_topbar.scss */
+      #topbar .alerts-dropdown .dropdown-menu li a:hover, #topbar .alerts-dropdown .dropdown-menu li a:focus {
+        color: #2b2b2b;
+        background-color: white;
+        text-decoration: none; }
+    /* line 180, ../scss/components/_topbar.scss */
+    #topbar .alerts-dropdown .dropdown-menu li .glyphicon {
+      display: table-cell;
+      vertical-align: middle;
+      padding-right: 10px;
+      font-size: 24px;
+      color: #002b7f; }
+    /* line 188, ../scss/components/_topbar.scss */
+    #topbar .alerts-dropdown .dropdown-menu li.warning {
+      color: #b40000; }
+      /* line 191, ../scss/components/_topbar.scss */
+      #topbar .alerts-dropdown .dropdown-menu li.warning a {
+        color: #b40000; }
+      /* line 195, ../scss/components/_topbar.scss */
+      #topbar .alerts-dropdown .dropdown-menu li.warning .glyphicon {
+        color: #b40000; }
+  /* line 206, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .left-side ul,
+  #topbar .other-city-dropdown .right-side ul {
+    overflow: hidden; }
+  /* line 212, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .dropdown-menu .title {
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 20px; }
+  /* line 218, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .dropdown-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    /* line 223, ../scss/components/_topbar.scss */
+    #topbar .other-city-dropdown .dropdown-menu ul li {
+      display: block;
+      padding: 10px 0;
+      list-style: none; }
+
+@media (max-width: 767px) {
+  /* line 237, ../scss/components/_topbar.scss */
+  #global-topbar #topbar .container {
+    padding-left: 0;
+    padding-right: 0; }
+  /* line 241, ../scss/components/_topbar.scss */
+  #global-topbar #topbar .ottawa-logo-link {
+    padding-top: 5px;
+    padding-bottom: 5px; }
+  /* line 247, ../scss/components/_topbar.scss */
+  #global-topbar #topbar .menu li a.glyphicon-dropdown-toggle {
+    padding: 5px 14px; }
+
+  /* line 255, ../scss/components/_topbar.scss */
+  #topbar .service-links {
+    display: none; }
+  /* line 260, ../scss/components/_topbar.scss */
+  #topbar .navbar-left,
+  #topbar .navbar-right {
+    margin: 0 0 0 -2px; }
+  /* line 264, ../scss/components/_topbar.scss */
+  #topbar .navbar-left {
+    float: left; }
+  /* line 268, ../scss/components/_topbar.scss */
+  #topbar .navbar-right {
+    float: right; }
+  /* line 272, ../scss/components/_topbar.scss */
+  #topbar .nav > li {
+    position: static; }
+  /* line 276, ../scss/components/_topbar.scss */
+  #topbar .ottawa-logo-container {
+    padding-left: 12px;
+    padding-right: 12px; }
+  /* line 280, ../scss/components/_topbar.scss */
+  #topbar .ottawa-logo-link {
+    padding-top: 17px;
+    padding-bottom: 17px; }
+  /* line 286, ../scss/components/_topbar.scss */
+  #topbar .menu li a.glyphicon-dropdown-toggle {
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  /* line 292, ../scss/components/_topbar.scss */
+  #topbar .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-left: -1px;
+    margin-right: -1px;
+    padding: 0; }
+  /* line 305, ../scss/components/_topbar.scss */
+  #topbar .dropdown-menu ul,
+  #topbar .dropdown-menu .menu,
+  #topbar .other-city-dropdown-above ul,
+  #topbar .other-city-dropdown-above .menu,
+  #topbar .other-city-dropdown .dropdown-menu ul,
+  #topbar .other-city-dropdown .dropdown-menu .menu {
+    border: none; }
+    /* line 308, ../scss/components/_topbar.scss */
+    #topbar .dropdown-menu ul li,
+    #topbar .dropdown-menu .menu li,
+    #topbar .other-city-dropdown-above ul li,
+    #topbar .other-city-dropdown-above .menu li,
+    #topbar .other-city-dropdown .dropdown-menu ul li,
+    #topbar .other-city-dropdown .dropdown-menu .menu li {
+      float: none;
+      padding: 0;
+      width: 100%; }
+      /* line 313, ../scss/components/_topbar.scss */
+      #topbar .dropdown-menu ul li a,
+      #topbar .dropdown-menu .menu li a,
+      #topbar .other-city-dropdown-above ul li a,
+      #topbar .other-city-dropdown-above .menu li a,
+      #topbar .other-city-dropdown .dropdown-menu ul li a,
+      #topbar .other-city-dropdown .dropdown-menu .menu li a {
+        padding: 20px 12px;
+        border-bottom: 1px solid #3c3c3c;
+        font-size: 15px; }
+        /* line 318, ../scss/components/_topbar.scss */
+        #topbar .dropdown-menu ul li a:hover, #topbar .dropdown-menu ul li a:focus,
+        #topbar .dropdown-menu .menu li a:hover,
+        #topbar .dropdown-menu .menu li a:focus,
+        #topbar .other-city-dropdown-above ul li a:hover,
+        #topbar .other-city-dropdown-above ul li a:focus,
+        #topbar .other-city-dropdown-above .menu li a:hover,
+        #topbar .other-city-dropdown-above .menu li a:focus,
+        #topbar .other-city-dropdown .dropdown-menu ul li a:hover,
+        #topbar .other-city-dropdown .dropdown-menu ul li a:focus,
+        #topbar .other-city-dropdown .dropdown-menu .menu li a:hover,
+        #topbar .other-city-dropdown .dropdown-menu .menu li a:focus {
+          background-color: white;
+          color: #2b2b2b;
+          text-decoration: none; }
+  /* line 329, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .dropdown-menu .title {
+    margin: 0;
+    padding: 20px 12px;
+    border-top: 1px solid #1c1c1c;
+    border-bottom: 1px solid #3c3c3c;
+    font-size: 17px;
+    background-color: #3c3c3c; }
+    /* line 337, ../scss/components/_topbar.scss */
+    #topbar .other-city-dropdown .dropdown-menu .title:before {
+      content: "\e114" !important;
+      font-family: "Glyphicons Halflings" !important;
+      font-variant: normal;
+      text-transform: none;
+      speak: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin-right: 10px; }
+  /* line 343, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .row {
+    margin-left: 0;
+    margin-right: 0; }
+  /* line 349, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .left-side,
+  #topbar .other-city-dropdown .right-side {
+    padding-left: 0;
+    padding-right: 0; }
+  /* line 355, ../scss/components/_topbar.scss */
+  #topbar .alerts-dropdown .dropdown-menu {
+    padding: 20px 12px 10px; } }
+@media (min-width: 768px) {
+  /* line 365, ../scss/components/_topbar.scss */
+  #topbar .dropdown-menu {
+    width: 300px; }
+  /* line 370, ../scss/components/_topbar.scss */
+  #topbar .other-city-dropdown .dropdown-menu {
+    width: 465px; }
+    /* line 373, ../scss/components/_topbar.scss */
+    #topbar .other-city-dropdown .dropdown-menu ul {
+      padding-left: 1.375rem; }
+      /* line 376, ../scss/components/_topbar.scss */
+      #topbar .other-city-dropdown .dropdown-menu ul li {
+        padding: 10px 0; }
+        /* line 379, ../scss/components/_topbar.scss */
+        #topbar .other-city-dropdown .dropdown-menu ul li a {
+          margin-left: 0;
+          padding: 0; }
+          /* line 110, ../scss/_mixins.scss */
+          #topbar .other-city-dropdown .dropdown-menu ul li a:before {
+            content: "\e258" !important;
+            font-family: "Glyphicons Halflings" !important;
+            font-variant: normal;
+            text-transform: none;
+            speak: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: inline-block;
+            padding-right: 0.75rem;
+            font-size: 0.75em;
+            text-decoration: underline; }
+          /* line 121, ../scss/_mixins.scss */
+          #topbar .other-city-dropdown .dropdown-menu ul li a:before {
+            text-decoration: none; }
+          /* line 384, ../scss/components/_topbar.scss */
+          #topbar .other-city-dropdown .dropdown-menu ul li a:before {
+            margin-left: -1.375rem; } }
+/* =============================================
+ _       _____    ____  _   _______   ________
+| |     / /   |  / __ \/ | / /  _/ | / / ____/
+| | /| / / /| | / /_/ /  |/ // //  |/ / / __  
+| |/ |/ / ___ |/ _, _/ /|  // // /|  / /_/ /  
+|__/|__/_/  |_/_/ |_/_/ |_/___/_/ |_/\____/   
+                                                                          
+================================================ */
+/**
+ * Do NOT place any styling code in this file.
+ *
+ * To add new CSS styling, the code should go into a new or existing
+ * component (which are reusable widgets or pieces of the site that appear
+ * in multiple places), or the code should go into a new or existing
+ * section (which is a page, content type, or sub-section of the site that
+ * contains special styling not found in other parts of the site).
+ *
+ * Putting styling code in this file is a violation of best practices and 
+ * should not be done.
+ */

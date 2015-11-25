@@ -1,0 +1,7 @@
+name = Ottawa TopBar
+description = City of Ottawa wide common TopBar elements.
+core = 7.x
+package = City of Ottawa
+version = 7.x-1.0-alpha1
+project = ottawa_topbar
+dependencies[] = context

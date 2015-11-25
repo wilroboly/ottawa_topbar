@@ -1,0 +1,124 @@
+/**
+ * Remove column gutters on an element.
+ */
+@mixin no-gutters() {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/**
+ * Add column gutters to an element.
+ */
+@mixin gutters() {
+  padding-left: ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+}
+
+/**
+ * Collapse an element into the gutters of it's container (using negative margins).
+ */
+@mixin anti-gutters() {
+  margin-left: -($grid-gutter-width / 2);
+  margin-right: -($grid-gutter-width / 2);
+}
+
+/**
+ * Collapse an element into the gutters of the site container (using negative margins).
+ */
+@mixin anti-site-gutters() {
+  margin-left: -$grid-gutter-width;
+  margin-right: -$grid-gutter-width;
+}
+
+/**
+ * Add site container gutters (which are larger than column gutters).
+ */
+@mixin site-container-gutters() {
+  padding-left: $site-container-gutter;
+  padding-right: $site-container-gutter;
+}
+
+/**
+ * Set the content to a font-icon character and change the font-family appropriately.
+ */
+@mixin font-icon ($content) {
+  content: $content !important;
+  font-family: $font-icon !important;
+  font-variant: normal;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * Set the content to a font-social-icon character and change the font-family appropriately.
+ */
+@mixin font-social-icon ($content) {
+  @include font-icon($content);
+  font-family: $font-social-icon !important;
+}
+
+/**
+ * Social media icon mixins (in case the Fontastic font changes characters in the future).
+ */
+@mixin font-social-icon-byname ($name) {
+  @if $name == 'facebook' {
+    @include font-social-icon("$");
+  }
+  @else if $name == 'twitter' {
+    @include font-social-icon("6");
+  }
+  @else if $name == 'youtube' {
+    @include font-social-icon("7");
+  }
+  @else if $name == 'instagram' {
+    @include font-social-icon("\"");
+  }
+  @else if $name == 'flickr' {
+    @include font-social-icon("%");
+  }
+  @else if $name == 'rss' {
+    @include font-social-icon("!");
+  }
+  @else if $name == 'pinterest' {
+    @include font-social-icon("8");
+  }
+  @else if $name == 'linkedin' {
+    @include font-social-icon("9");
+  }
+  @else if $name == 'google' {
+    @include font-social-icon("#");
+  }
+  @else if $name == 'android' {
+    @include font-social-icon("a");
+  }
+  @else if $name == 'apple' {
+    @include font-social-icon("b");
+  }
+  @else if $name == 'chat' {
+    @include font-social-icon("c");
+  }
+}
+
+/**
+ * Shows an icon in front of inline text.
+ *
+ * $content -> Defaults to a right-arrow icon.
+ */
+@mixin list-icon ($content: "\e258") {
+  &:before {
+    @include font-icon($content);
+    display: inline-block;
+    padding-right: 0.75rem;
+    font-size: 0.75em;
+    text-decoration: underline;
+  }
+
+  // Brutal fix for IE9-11 incorrectly rendering the underline when we don't want it.
+  // It needs to be set to underline (as above) and then set AGAIN to none before it
+  // actually registers no underline.
+  &:before {
+    text-decoration: none;
+  }
+}
